@@ -1,0 +1,16 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+
+- name: owasp-wte | Add owasp-wte repo
+  apt_repository: repo='deb http://appseclive.org/apt/14.04 trusty main' update_cache=yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: owasp-wte | Addkey owasp-wte
+  apt_key: url=http://appseclive.org/apt/owasp-wte.gpg.key  state=present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: owasp-wte | Install owasp-wte
+  apt: pkg={{ item }} state=present update_cache=yes
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  with_items:
+   - owasp-wte-*
