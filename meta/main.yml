@@ -41,6 +41,8 @@ ansigenome_info:
     This ``Simple`` role allows you to install [owasp-wte](https://github.com/mtesauro/owasp-wte) service
     which can be used to setup your environment on hosts.
 
+    See presentation at : http://www.slideshare.net/mtesauro/owasp-wte-now-in-the-cloud
+
   usage: |
     Describe how to use in more detail...
 
