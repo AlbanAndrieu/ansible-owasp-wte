@@ -1,9 +1,9 @@
-owasp-wte_enabled: yes                       # Enable module
+owasp_wte_enabled: yes                       # Enable module
 
-owasp-wte_base_dir: "/usr/share/owasp-wte"
+owasp_wte_base_dir: "/usr/share/owasp_wte"
 
 docker_files_generated_directory: "./"
 docker_files_enable: no
-docker_volume_directory: "{{ owasp-wte_base_dir }}"
+docker_volume_directory: "{{ owasp_wte_base_dir }}"
 docker_working_directory: "/home/vagrant"
 docker_image_name: "nabla/ansible-owasp-wte"

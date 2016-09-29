@@ -2,7 +2,7 @@
 # This playbook contains common plays that will be run on all nodes.
 
 - include: owasp-wte.yml
-  when: owasp-wte_enabled
+  when: owasp_wte_enabled
   tags: [owasp-wte]
 
 - name: Copy Dockerfile
