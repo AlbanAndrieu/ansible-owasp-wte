@@ -9,7 +9,7 @@ VOLUME      [/usr/share/owasp-wte]
 MAINTAINER  Alban Andrieu "https://github.com/AlbanAndrieu"
 
 ENV			DEBIAN_FRONTEND noninteractive
-ENV         owasp-wte_HOME /usr/share/owasp-wte
+ENV         owasp_wte_HOME /usr/share/owasp_wte
 
 # Working dir
 WORKDIR /home/vagrant

@@ -9,7 +9,7 @@ VOLUME      [{{ docker_volume_directory }}]
 MAINTAINER  Alban Andrieu "https://github.com/AlbanAndrieu"
 
 ENV			DEBIAN_FRONTEND noninteractive
-ENV         owasp-wte_HOME {{ owasp-wte_base_dir }}
+ENV         owasp_wte_HOME {{ owasp_wte_base_dir }}
 
 # Working dir
 WORKDIR {{ docker_working_directory }}
@@ -36,6 +36,6 @@ ADD playbook.yml $WORKDIR/playbook.yml -vvvv
 RUN         ansible-playbook $WORKDIR/playbook.yml -i $WORKDIR/hosts -c local
 
 EXPOSE      22
-ENTRYPOINT  ["/etc/init.d/owasp-wte"]
+ENTRYPOINT  ["/etc/init.d/owasp_wte"]
 CMD /usr/sbin/sshd -D
 #CMD ["-g", "deamon off;"]
