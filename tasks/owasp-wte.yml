@@ -3,14 +3,62 @@
 
 - name: owasp-wte | Add owasp-wte repo
   apt_repository: repo='deb http://appseclive.org/apt/14.04 trusty main' update_cache=yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and (ansible_distribution_version in ['12.04', '14.04'])
+  become: yes
+
+#- name: owasp-wte | Add owasp-wte repo
+#  apt_repository: repo='deb http://appseclive.org/apt/16.04 xenial main' update_cache=yes
+#  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and (ansible_distribution_version in ['16.04'])
+#  become: yes
 
 - name: owasp-wte | Addkey owasp-wte
   apt_key: url=http://appseclive.org/apt/owasp-wte.gpg.key  state=present
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu')
+  become: yes
 
 - name: owasp-wte | Install owasp-wte
   apt: pkg={{ item }} state=present update_cache=yes
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and (ansible_distribution_version in ['12.04', '14.04'])
   with_items:
    - owasp-wte-*
+  become: yes
+
+- name: owasp-wte | Install owasp-wte
+  apt: pkg={{ item }} state=present update_cache=yes
+  when: (ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu') and (ansible_distribution_version in ['12.04', '14.04'])
+  with_items:
+#   - python-support
+    - owasp-wte-sqlmap
+    - owasp-wte-cal9000
+    - owasp-wte-nmap
+    - owasp-wte-httprint
+    - owasp-wte-netcat
+    - owasp-wte-webscarab
+    - owasp-wte-skipfish
+    - owasp-wte-wsfuzzer
+    - owasp-wte-w3af
+    - owasp-wte-gruyere
+    - owasp-wte-webgoat
+    - owasp-wte-firefox
+    - owasp-wte-fuzzdb
+    - owasp-wte-nikto
+    - owasp-wte-dirbuster
+    - owasp-wte-jbrofuzz
+    - owasp-wte-fierce
+    - owasp-wte-jerry-curl
+    - owasp-wte-zap
+    - owasp-wte-webslayer
+    - owasp-wte-tcpdump
+    - owasp-wte-burpsuite
+    - owasp-wte-ende
+    - owasp-wte-wapiti
+    - owasp-wte-wte-docs
+    - owasp-wte-paros
+#    - owasp-wte-spikeproxy
+    - owasp-wte-grendel-scan
+    - owasp-wte-ratproxy
+    - owasp-wte-wireshark
+    - owasp-wte-jq
+    - owasp-wte-wpscan
+    - owasp-wte-sqlbrute
+  become: yes
