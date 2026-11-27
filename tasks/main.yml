@@ -1,7 +1,7 @@
 ---
 # This playbook contains common plays that will be run on all nodes.
 
-- include: owasp-wte.yml
+- ansible.builtin.import_tasks: owasp-wte.yml
   when: owasp_wte_enabled
   tags: [owasp-wte]
 
